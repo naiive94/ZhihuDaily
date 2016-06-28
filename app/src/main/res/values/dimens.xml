@@ -1,0 +1,13 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="bannerHeight">200dp</dimen>
+    <dimen name="newsImageHeight">80dp</dimen>
+    <dimen name="cardPadding">8dp</dimen>
+    <dimen name="radiusCard">10dp</dimen>
+    <dimen name="cardInnerDistance">8dp</dimen>
+    <dimen name="avatarSize">44dp</dimen>
+    <dimen name="drawerMargin">16dp</dimen>
+    <dimen name="drawerItemHeight">48dp</dimen>
+</resources>
