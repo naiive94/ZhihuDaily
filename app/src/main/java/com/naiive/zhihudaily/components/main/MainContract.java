@@ -24,5 +24,7 @@ public interface MainContract {
     interface Presenter extends BasePresenter{
 
         void getDrawerList();
+
+        void updateDrawerList();
     }
 }

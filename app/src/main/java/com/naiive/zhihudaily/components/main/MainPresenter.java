@@ -45,6 +45,7 @@ public class MainPresenter extends AbsPresenter implements Presenter {
         firstLoad = false;
     }
 
+    @Override
     public void updateDrawerList() {
         loadDrawerList(true);
     }
