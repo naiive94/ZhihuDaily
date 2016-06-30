@@ -1,6 +1,7 @@
 #ZhihuDaily RxJava MVP
-知乎日报的非官方版本，项目采用 Google MVP + Retrofit + RxJava.
+知乎日报的非官方版本，项目采用 Google MVP + Retrofit + RxJava 。
 
+应用的API来源为 [izzyleung/ZhihuDailyPurify](https://github.com/izzyleung/ZhihuDailyPurify/wiki/知乎日报-API-分析)，在这里表示感谢。
 
 ##Architecture
 ###Packaging
