@@ -7,7 +7,7 @@
 <img src="screenshots/packaging.png" width="50%" />
 
 ###Code
-根据功能模块分为不同的包，在每个功能模块中定义Contract，约定View以及Presenter的方法。
+根据功能模块分为不同的包，在每个功能模块中定义Contract，配置View以及Presenter的方法。
 
 ```java
 public interface MainContract {
@@ -30,7 +30,9 @@ public interface MainContract {
     }
 }
 ```
-MainPresenter中的RxJava的运用，这里暂时还没有对subscriber进行封装。
+``MainPresenter``中的RxJava的运用，这里暂时还没有对``subscriber``进行封装。
+
+这里从``mRepository``通过一定的策略返回内存缓存、磁盘缓存或者网络数据源的Observable。
 
 
 ```java
@@ -76,6 +78,11 @@ public static TopicRepository provideTopicRepository(){
 - Banner
 
 ##TODO LIST
+
+- [ ] 把``Repository``中的获取数据方法封装为不同策略
+- [ ] 内容详情页
+- [ ] 登录模块
+
 
 #License
 
