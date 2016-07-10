@@ -80,8 +80,8 @@ public static TopicRepository provideTopicRepository(){
 
 ##TODO LIST
 
-- [ ] 把``Repository``中的获取数据方法封装为不同策略
-- [ ] 内容详情页
+- [x] 内容详情页
+- [ ] 左右滑动切换内容页
 - [ ] 登录模块
 
 

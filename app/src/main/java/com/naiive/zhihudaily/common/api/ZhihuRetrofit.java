@@ -28,6 +28,10 @@ public class ZhihuRetrofit {
         return createRetrofit(okHttpClient, Constant.BASE_URL).create(ZhihuApi.class);
     }
 
+    public CommonApi getCommonApi(String url){
+        return createRetrofit(okHttpClient,url).create(CommonApi.class);
+    }
+
     private Retrofit createRetrofit(OkHttpClient okHttpClient, String host) {
         return new Retrofit.Builder()
                 .client(okHttpClient)

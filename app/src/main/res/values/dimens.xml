@@ -10,4 +10,5 @@
     <dimen name="avatarSize">44dp</dimen>
     <dimen name="drawerMargin">16dp</dimen>
     <dimen name="drawerItemHeight">48dp</dimen>
+    <dimen name="articleImageHeight">300dp</dimen>
 </resources>

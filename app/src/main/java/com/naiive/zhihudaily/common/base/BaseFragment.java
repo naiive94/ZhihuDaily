@@ -1,5 +1,6 @@
 package com.naiive.zhihudaily.common.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -26,6 +27,7 @@ public abstract class BaseFragment extends Fragment {
         super.onAttach(context);
         mContext = context;
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

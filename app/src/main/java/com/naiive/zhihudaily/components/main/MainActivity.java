@@ -72,6 +72,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         mPresenter.unSubscribe();
     }
 
+
     @Override
     protected int setContentViewId() {
         return R.layout.activity_main;
@@ -139,7 +140,6 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     @Override
     public void showDrawerItems(List<DrawerItem> list) {
         mDrawerAdapter.setNewData(list);
-
     }
 
     @Override

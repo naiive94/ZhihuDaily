@@ -1,6 +1,7 @@
 package com.naiive.zhihudaily;
 
 import com.naiive.zhihudaily.data.DataSource;
+import com.naiive.zhihudaily.data.source.ArticleRepository;
 import com.naiive.zhihudaily.data.source.NewsRepository;
 import com.naiive.zhihudaily.data.source.TopicRepository;
 
@@ -15,6 +16,10 @@ public class Injection {
 
     public static TopicRepository provideTopicRepository(){
         return DataSource.Proxy.create().get(TopicRepository.class);
+    }
+
+    public static ArticleRepository provideArticleRepository(){
+        return DataSource.Proxy.create().get(ArticleRepository.class);
     }
 
 }

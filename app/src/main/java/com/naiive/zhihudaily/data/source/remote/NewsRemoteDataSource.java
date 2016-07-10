@@ -30,20 +30,30 @@ public class NewsRemoteDataSource implements NewsDataSource {
 
     @Override
     public Observable<News> getNews() {
-        return api.getLatestNews().doOnNext(new Action1<News>() {
+        return api.getLatestNews().filter(new Func1<News, Boolean>() {
+            @Override
+            public Boolean call(News news) {
+                return news!=null;
+            }
+        }).doOnNext(new Action1<News>() {
             @Override
             public void call(News news) {
-                cacheNews(news);
+                cacheNews(news, news.getDate());
             }
         });
     }
 
     @Override
     public Observable<News> getMoreNews(final String beforeDate) {
-        return api.getMoreNews(beforeDate).doOnNext(new Action1<News>() {
+        return api.getMoreNews(beforeDate).filter(new Func1<News, Boolean>() {
+            @Override
+            public Boolean call(News news) {
+                return news!=null;
+            }
+        }).doOnNext(new Action1<News>() {
             @Override
             public void call(News news) {
-                cacheNews(news,beforeDate);
+                cacheNews(news, beforeDate);
             }
         });
     }

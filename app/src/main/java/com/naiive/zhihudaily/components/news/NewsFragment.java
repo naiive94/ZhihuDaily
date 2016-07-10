@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.naiive.zhihudaily.R;
 import com.naiive.zhihudaily.common.base.BaseFragment;
+import com.naiive.zhihudaily.components.article.ArticleActivity;
 import com.naiive.zhihudaily.model.view.NewsItem;
 import com.naiive.zhihudaily.support.EndlessScrollListener;
 import com.naiive.zhihudaily.utils.ImageUtil;
@@ -54,7 +55,8 @@ public class NewsFragment extends BaseFragment implements NewsContract.View {
         mAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
-
+                int id = ((NewsItem) mAdapter.getData().get(i)).id;
+                startActivity(ArticleActivity.getCallingIntent(getContext(),id));
             }
         });
         mRecyclerView.addOnScrollListener(new EndlessScrollListener() {

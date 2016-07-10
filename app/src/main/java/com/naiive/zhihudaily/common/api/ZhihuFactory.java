@@ -6,6 +6,7 @@ package com.naiive.zhihudaily.common.api;
 public class ZhihuFactory {
 
     private static ZhihuApi zhihuApi;
+    private static CommonApi commonApi;
 
     private ZhihuFactory() {
     }
@@ -15,6 +16,13 @@ public class ZhihuFactory {
             zhihuApi = new ZhihuRetrofit().getZhihuApi();
         }
         return zhihuApi;
+    }
+
+    public static CommonApi getCommonApi(String fullUrl){
+        if (commonApi == null){
+            commonApi = new ZhihuRetrofit().getCommonApi(fullUrl);
+        }
+        return commonApi;
     }
 
 

@@ -40,20 +40,16 @@ public class NewsRepository implements DataSource {
     }
 
     public Observable<News> getNews() {
+        Observable<News> ret;
+
         if (mCachedNews != null && !mCacheIsDirty) {
             return Observable.just(mCachedNews);
         }
 
-        Observable<News> localNews = mLocalDataSource.getNews();
+        final Observable<News> localNews = mLocalDataSource.getNews();
 
         Observable<News> remoteNews = mRemoteDataSource
                 .getNews()
-                .doOnNext(new Action1<News>() {
-                    @Override
-                    public void call(News news) {
-                        mCachedNews = news;
-                    }
-                })
                 .doOnCompleted(new Action0() {
                     @Override
                     public void call() {
@@ -62,14 +58,21 @@ public class NewsRepository implements DataSource {
                 });
 
         if (mCacheIsDirty) {
-            return remoteNews;
+            ret = remoteNews;
         } else {
-            return Observable.concat(localNews, remoteNews).first();
+            ret = Observable.concat(localNews, remoteNews).first();
         }
+        return ret.doOnNext(new Action1<News>() {
+            @Override
+            public void call(News news) {
+                mCachedNews = news;
+            }
+        });
     }
 
 
     public Observable<List<NewsItem>> getMoreNews() {
+        if (mCachedNews == null) return Observable.empty();
 
         String date = mCachedNews.getDate();
         Observable<News> remote = mRemoteDataSource.getMoreNews(date);
@@ -96,18 +99,18 @@ public class NewsRepository implements DataSource {
     public List<NewsItem> convertStories(News news) {
         List<NewsItem> list = new ArrayList<>();
         for (Story story : news.getStories()) {
-            list.add(new NewsItem(story.getTitle(), story.getImages().get(0), story.getImages().size() == 1 ? 0 : 1));
+            list.add(new NewsItem(story.getTitle(), story.getImages().get(0), story.getImages().size() == 1 ? 0 : 1,story.getId()));
         }
         return list;
     }
 
-    public List<String[]> convertTopStories(News news){
+    public List<String[]> convertTopStories(News news) {
         List<String[]> list = new ArrayList<>();
         int size = news.getTopStories().size();
         String[] images = new String[size];
         String[] titles = new String[size];
         int i = 0;
-        for (TopStory story:news.getTopStories()){
+        for (TopStory story : news.getTopStories()) {
             images[i] = story.getImage();
             titles[i] = story.getTitle();
             i++;
